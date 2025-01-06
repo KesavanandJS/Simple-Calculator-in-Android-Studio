@@ -198,31 +198,46 @@ public class MainActivity extends AppCompatActivity {
         });
 
         bsqr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        @Override
+        public void onClick(View v) {
+            try {
                 num1 = Integer.parseInt(display.getText().toString());
-                opp = 's';
-                display.setText("");
+                int result = num1 * num1;
+                display.setText(String.valueOf(result));
+            } catch (NumberFormatException e) {
+                display.setText("Invalid Input");
             }
+        }
         });
+
 
         bcube.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        @Override
+        public void onClick(View v) {
+            try {
                 num1 = Integer.parseInt(display.getText().toString());
-                opp = 'c';
-                display.setText("");
+                int result = num1 * num1 * num1;
+                display.setText(String.valueOf(result));
+            } catch (NumberFormatException e) {
+                display.setText("Invalid Input");
             }
-        });
+        }
+    });
+
 
         bsqrt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        @Override
+        public void onClick(View v) {
+            try {
                 num1 = Integer.parseInt(display.getText().toString());
-                opp = 'r';
-                display.setText("");
+                double result = Math.sqrt(num1);
+                display.setText(String.valueOf(result));
+            } catch (NumberFormatException e) {
+                display.setText("Invalid Input");
             }
-        });
+        }
+    });
+
 
         bequal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -231,40 +246,32 @@ public class MainActivity extends AppCompatActivity {
                 int result = 0;
 
                 switch (opp) {
-                    case '+':
-                        result = num1 + num2;
-                        break;
-                    case '-':
-                        result = num1 - num2;
-                        break;
-                    case '*':
-                        result = num1 * num2;
-                        break;
-                    case '/':
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
                         if (num2 != 0) {
-                            result = num1 / num2;
-                        } else {
-                            display.setText("Mathematical Error");
-                            return;
-                        }
+                        result = num1 / num2;
+                    } else {
+                        display.setText("Mathematical Error");
+                        return;
+                    }
                         break;
-                    case '%':
-                        result = num1 % num2;
-                        break;
-                    case '^':
-                        result = (int) Math.pow(num1, num2);
-                        break;
-                    case 's':
-                        result = num1 * num1;
-                        break;
-                    case 'c':
-                        result = num1 * num1 * num1;
-                        break;
-                    case 'r':
-                        result = (int) Math.sqrt(num1);
-                        break;
-                }
-                display.setText(String.valueOf(result));
+                case '%':
+                    result = num1 % num2;
+                    break;
+                case '^':
+                    result = (int) Math.pow(num1, num2);
+                    break;
+            }
+            display.setText(String.valueOf(result));
+
             }
         });
 
